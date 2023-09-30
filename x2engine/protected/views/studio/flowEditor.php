@@ -306,13 +306,19 @@ $this->leftPortlets[] = array(
                 <?php echo CHtml::encode (Yii::t('studio', 'Toggle Node Labels')); ?>
             </label>
         </div>
-    </div>
-    <div class="row">
-        <div class="cell">
-            <?php echo $form->label($model, 'name'); ?>
-            <?php echo $form->textField($model, 'name'); ?>
-            <?php echo $form->hiddenField($model, 'flow',
-                    array('id' => 'flowDataField')); ?>
+        <div class="row">
+            <div class="cell">
+                    <?php echo $form->label($model, 'name'); ?>
+                    <?php echo $form->textField($model, 'name'); ?>
+                    <?php echo $form->hiddenField($model, 'flow', array('id' => 'flowDataField')); ?>
+            </div>
+        </div>
+        <div class="row" style="width:100%">
+            <div class="cell" style="width:99%">
+                <?php echo $form->label($model, 'description'); ?>
+                <?php echo $form->textArea($model, 'description', array('style' => 'width:100%'));
+                ?>
+            </div>
         </div>
     </div>
     <div class="row" style="width:100%">

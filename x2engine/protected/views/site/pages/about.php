@@ -142,14 +142,12 @@ Yii::app()->clientScript->registerScript('loadJqueryVersion',
                 array(
             'John Roberts',
             'David Buchanan',
-            'Raymond Colebaugh',
-            'Josef Bustamante',
-            'Isaiah Solomon',
             'Peter Czupil',
-            'Jake Houser',
-            'Steve Lance',
-            'Derek Mueller',
-            'Matthew Pearson',
+            'Tom Carroll',
+            'Jack Lento-Edritch',
+            'Clifton Chiang',
+            'Justin Toyomitsu',
+            'Justin Law',
         ));
         ?><br><br>
     </div>

@@ -724,7 +724,6 @@ abstract class x2base extends X2Controller {
         if($this->beforeRender($view))
         {
             $output=$this->renderPartial($view,$data,true);
-
             /* x2modstart */ 
             if(($layoutFile=$this->getLayoutFile($this->layout))!==false) {
                 $output = $this->renderLayout ($layoutFile, $output);
