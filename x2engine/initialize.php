@@ -1,7 +1,7 @@
 <?php
 /***********************************************************************************
  * X2Engine Open Source Edition is a customer relationship management program developed by
- * X2 Engine, Inc. Copyright (C) 2011-2019 X2 Engine Inc.
+ * X2 Engine, Inc. Copyright (C) 2011-2017 X2 Engine Inc.
  * 
  * This program is free software; you can redistribute it and/or modify it under
  * the terms of the GNU Affero General Public License version 3 as published by the
@@ -33,9 +33,6 @@
  * technical reasons, the Appropriate Legal Notices must display the words
  * "Powered by X2 Engine".
  **********************************************************************************/
-
-
-
 
 ////////////////////
 // Global Objects //
@@ -555,7 +552,7 @@ function installStage($stage) {
             fclose($handle);
 
             // Create an encryption key for credential storage:
-            if (extension_loaded('openssl')) {
+            if (extension_loaded('openssl') && extension_loaded('mcrypt')) {
                 $encryption = new EncryptUtil(
                         implode(DIRECTORY_SEPARATOR, array(__DIR__, 'protected','config','encryption.key')),
                         implode(DIRECTORY_SEPARATOR, array(__DIR__, 'protected','config','encryption.iv'))

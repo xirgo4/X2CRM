@@ -34,7 +34,6 @@ CREATE TABLE x2_quotes(
     total              DECIMAL(18,2) DEFAULT 0.0,
     subtotal           DECIMAL(18,2) DEFAULT 0.0,
     UNIQUE(nameId),
-    INDEX (email),
     INDEX(accountName),
     INDEX(associatedContacts),
     INDEX(template)

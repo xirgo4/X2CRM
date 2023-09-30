@@ -32,9 +32,7 @@ CREATE TABLE x2_opportunities(
     personalEmail      VARCHAR(250),
     alternativeEmail   VARCHAR(250),
     preferredEmail     VARCHAR(250),
-
     UNIQUE(nameId),
-    INDEX (email),
     INDEX(accountName)
 ) COLLATE = utf8_general_ci;
 /*&*/
