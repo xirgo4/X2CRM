@@ -2,7 +2,7 @@
 
 /***********************************************************************************
  * X2Engine Open Source Edition is a customer relationship management program developed by
- * X2 Engine, Inc. Copyright (C) 2011-2019 X2 Engine Inc.
+ * X2 Engine, Inc. Copyright (C) 2011-2017 X2 Engine Inc.
  * 
  * This program is free software; you can redistribute it and/or modify it under
  * the terms of the GNU Affero General Public License version 3 as published by the
@@ -34,9 +34,6 @@
  * technical reasons, the Appropriate Legal Notices must display the words
  * "Powered by X2 Engine".
  **********************************************************************************/
-
-
-
 
 
 Yii::import('application.components.behaviors.LinkableBehavior');
@@ -897,17 +894,14 @@ abstract class X2Model extends X2ActiveRecord {
                     $this->asa('FlowTriggerBehavior')->enabled) {
                 $this->enableUpdateTrigger();
             }
-            
             $retVal = $this->getIsNewRecord() ?
                     $this->insert($attributes) : $this->update($attributes);
-            
             if ($this->asa('FlowTriggerBehavior') &&
                     $this->asa('FlowTriggerBehavior')->enabled) {
-           
+
                 $this->disableUpdateTrigger();
             }
             /* x2modend */
-     
             return $retVal;
         } else {
             return false;
@@ -1604,9 +1598,7 @@ abstract class X2Model extends X2ActiveRecord {
     }
 
     public function insert($attributes = null) {
-        
         $succeeded = parent::insert($attributes);
-       // printR( json_encode($attributes),1);
         // Alter and save the nameId field:
         if ($succeeded && self::$autoPopulateFields) {
             $this->updateNameId(true);
@@ -1983,16 +1975,8 @@ abstract class X2Model extends X2ActiveRecord {
                 } else {
                     $uid = Yii::app()->user->id;
                 }
-                return Credentials::selectorField(
-                    $model,
-                    $field->fieldName,
-                    $type,
-                    $uid,
-                    array(),
-                    count($typeAlias) >= 3 && $typeAlias[2] == 'bounced',
-                    false,
-                    count($typeAlias) >= 3 && $typeAlias[2] == 'bounced'
-                );
+                return Credentials::selectorField($model, $field->fieldName, $type, $uid);
+
             case 'timerSum':
                 // Sorry, no-can-do. This is field derives its value from a sum over timer records.
                 return $model->renderAttribute($field->fieldName);
@@ -2980,7 +2964,9 @@ abstract class X2Model extends X2ActiveRecord {
     }
 
     public function duplicateFields() {
-        return isset(Yii::app()->settings->duplicateFields) ? explode(",",Yii::app()->settings->duplicateFields) : array('name');
+        return array(
+            'name',
+        );
     }
 
     /**

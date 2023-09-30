@@ -1,6 +1,6 @@
 /***********************************************************************************
  * X2Engine Open Source Edition is a customer relationship management program developed by
- * X2 Engine, Inc. Copyright (C) 2011-2019 X2 Engine Inc.
+ * X2 Engine, Inc. Copyright (C) 2011-2017 X2 Engine Inc.
  * 
  * This program is free software; you can redistribute it and/or modify it under
  * the terms of the GNU Affero General Public License version 3 as published by the
@@ -33,9 +33,6 @@
  * "Powered by X2 Engine".
  **********************************************************************************/
 
-
-
-
 x2.SettingsController = (function () {
 
 function SettingsController (argsDict) {
@@ -53,8 +50,12 @@ SettingsController.prototype.setUpForm = function () {
     var that = this;
     var settingsView$ = $.mobile.activePage.find ('.detail-view');
     var languageInput$ = settingsView$.find ('.profile-language');
+    var translateToLanguageInput$ = settingsView$.find ('.profile-translate-to-language');
     var form$ = settingsView$.find ('form');
     languageInput$.change (function () {
+        form$.submit (); 
+    });
+    translateToLanguageInput$.change (function () {
         form$.submit (); 
     });
 
